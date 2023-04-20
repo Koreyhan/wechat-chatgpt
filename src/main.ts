@@ -2,6 +2,7 @@ import { WechatyBuilder } from "wechaty";
 import QRCode from "qrcode";
 import { ChatGPTBot } from "./bot.js";
 import {config} from "./config.js";
+import checkEnv from "./utils/checkEnv.js";
 const chatGPTBot = new ChatGPTBot();
 
 const bot =  WechatyBuilder.build({
@@ -43,6 +44,7 @@ async function main() {
       }
     });
   try {
+    await checkEnv();
     await bot.start();
   } catch (e) {
     console.error(
